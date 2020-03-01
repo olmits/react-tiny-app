@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './../../../../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import {createUseStyles} from 'react-jss';
 
@@ -25,7 +26,7 @@ const useStyles = createUseStyles({
     }),
 })
 
-export default function FavoriteButton({style, ...props}){
+function FavoriteButton({style, ...props}){
     const classes = useStyles()
     const {addStyle, onClick} = props
     return(
@@ -34,3 +35,10 @@ export default function FavoriteButton({style, ...props}){
         </div>
     )
 }
+
+FavoriteButton.propTypes = {
+    addStyle: PropTypes.object,
+    onClick: PropTypes.func
+}
+
+export default FavoriteButton

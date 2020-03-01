@@ -1,5 +1,6 @@
 import React from 'react';
-import {createUseStyles} from 'react-jss'
+import {createUseStyles} from 'react-jss';
+import PropTypes from 'prop-types';
 
 const useStyle = createUseStyles({
     sectionHeader: {
@@ -14,7 +15,17 @@ const useStyle = createUseStyles({
     }
 })
 
-export default function SectionHeader(props){
+/**
+ * 
+ * @description simple Component to customize and render a header for a section
+ */
+function SectionHeader(props){
     const classes = useStyle();
     return <h3 className={classes.sectionHeader}>{props.title}</h3>
 }
+
+SectionHeader.propTypes = {
+    title: PropTypes.string
+}
+
+export default SectionHeader

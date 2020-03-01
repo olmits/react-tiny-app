@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Button from './../Button';
 import Card from 'react-bootstrap/Card';
 import StarRatings from 'react-star-ratings';
@@ -8,6 +10,11 @@ import './../../../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import withStyles from 'react-jss';
 import styles from './style';
 
+/**
+ * @description: create and render a card of product information
+ * @method clickOnCartBtn to handle a click on an add to cart button 
+ * @method clickOnFavoriteBtn to handle a click on an add to favorite button
+ */
 class ProductCard extends Component {
     constructor(props){
         super(props)
@@ -71,6 +78,13 @@ class ProductCard extends Component {
             </Card>
         )
     }
+}
+
+ProductCard.propTypes = {
+    productInfo: PropTypes.object,
+    clickOnCartBtn: PropTypes.func,
+    clickOnAddFavoriteBtn: PropTypes.func,
+    clickOnRemoveFavoriteBtn: PropTypes.func
 }
 
 export default withStyles(styles)(ProductCard);

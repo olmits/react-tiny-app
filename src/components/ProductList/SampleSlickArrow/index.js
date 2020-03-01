@@ -1,5 +1,6 @@
 import React from 'react';
 import {createUseStyles} from 'react-jss';
+import PropTypes from 'prop-types';
 
 const useStyles = createUseStyles({
     listArrowSample: ({
@@ -34,7 +35,11 @@ const useStyles = createUseStyles({
     }),
 })
 
-export default function SampleArrow({style, onClick, ...props}) {
+/**
+ * 
+ * @description simple Component to customize and render a single slick slider arrow
+ */
+function SampleArrow({style, onClick, ...props}) {
     const classes = useStyles();
     const {addStyle, addContentClass} = props;
 
@@ -46,3 +51,10 @@ export default function SampleArrow({style, onClick, ...props}) {
         />
     );
 }
+
+SampleArrow.propTypes = {
+    addStyle: PropTypes.object,
+    addContentClass: PropTypes.string
+}
+
+export default SampleArrow

@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 
 import SectionHeader from './../SectionHeader';
 import ProductCard from './../ProductCard';
-// import UserProductCard from './../../containers/UserProductCard';
 import SampleArrow from './SampleSlickArrow';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
+/**
+ * @description: create and render a list of products as slick slider carousel of cards
+ * @method handleAddToCart to add product item to a cart 
+ * function, that is received from UserPage as a callback
+ * @method handleAddToFavorite to add product item to a favorite
+ * function, that is received from UserPage as a callback
+ * @method handleRemoveFromFavorite to remove product item from a favorite
+ * function, that is received from UserPage as a callback
+ */
 class ProductList extends Component {
     
     handleAddToCart(prodId){
@@ -48,12 +56,18 @@ class ProductList extends Component {
                                                         clickOnCartBtn={this.handleAddToCart.bind(this)}
                                                         clickOnAddFavoriteBtn={this.handleAddToFavorite.bind(this)}
                                                         clickOnRemoveFavoriteBtn={this.handleRemoveFromFavorite.bind(this)}
-
                             />)}
                 </Slider>
             </div>
         )
     }
+}
+
+ProductList.propTypes = {
+    dataProducts: PropTypes.array,
+    handleAddToCart: PropTypes.func,
+    handleAddToFavorite: PropTypes.func,
+    handleRemoveFromFavorite: PropTypes.func
 }
 
 export default ProductList
