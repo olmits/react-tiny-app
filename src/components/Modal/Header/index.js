@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import styles from "./styles";
+import {ThemeContext} from '../../../containers/UserPage/style';
 
 class Header extends Component {
     constructor(props){
@@ -14,20 +15,23 @@ class Header extends Component {
         closeCallback();
     }
     render() {
-        const {title, closeButton, styleObject, classes} = this.props;
-        let inlineStyle = {backgroundColor: styleObject.backgroundModalHeader};
+        const {title, closeButton, classes} = this.props;
 
         return (
-            <div className={classes.modalHeader} style={inlineStyle}>
-                {title}
-                { 
-                    closeButton && 
-                    <button 
-                        className={classes.closeModalBtn}
-                        onClick={this.handleClose}
-                        >&times;</button>
-                }
-            </div>
+            <ThemeContext.Consumer>
+                {theme => (
+                    <div className={classes.modalHeader} style={{backgroundColor: theme.backgroundModalHeader}}>
+                        {title}
+                        { 
+                            closeButton && 
+                            <button 
+                                className={classes.closeModalBtn}
+                                onClick={this.handleClose}
+                                >&times;</button>
+                        }
+                    </div>
+                )}
+            </ThemeContext.Consumer>
         )
     }
 }

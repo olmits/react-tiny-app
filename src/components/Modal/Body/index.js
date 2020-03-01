@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import withStyles from "react-jss";
 import styles from "./styles";
+import {ThemeContext} from '../../../containers/UserPage/style';
 
 
 class Body extends Component {
@@ -9,11 +10,13 @@ class Body extends Component {
         super(props)
     }
     render() {
-        const {text, styleObject, classes} = this.props;
-        let inlineStyle = {backgroundColor: styleObject.backgroundModalBody};
-
+        const {text, classes} = this.props;
         return(
-            <div className={classes.modalBody} style={inlineStyle}>{text}</div>
+            <ThemeContext.Consumer>
+                {theme => (
+                    <div className={classes.modalBody} style={{backgroundColor: theme.backgroundModalBody}}>{text}</div>
+                )}
+            </ThemeContext.Consumer>
         )
     }
 }

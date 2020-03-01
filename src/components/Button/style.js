@@ -3,15 +3,16 @@ export default {
         cursor: 'pointer',
         border: '1px solid transparent',
         borderRadius: '.25rem',
-        fontSize: '1rem',
         textAlign: 'center',
         verticalAlign: 'middle',
         display: 'inline-block',
+        justifyContent: 'center',
+        fontSize: '1em',
         padding: {
-            top: '.375rem',
-            right: '.75rem',
-            left: '.75rem',
-            bottom: '.375rem'
+            top: '.375em',
+            right: '.75em',
+            left: '.75em',
+            bottom: '.37rem'
         },
         margin: {
             top: '.175rem',
@@ -19,6 +20,5 @@ export default {
             left: '.25rem',
             bottom: '.175rem'
         },
-        justifyContent: 'center'
     }
 }

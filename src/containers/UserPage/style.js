@@ -9,14 +9,14 @@ export default {
             left: 0,
             bottom: 0
         },
-        display: 'flex',
-        justifyContent: 'center',
-        position: 'relative'
+        // display: 'flex',
+        // justifyContent: 'center',
+        // position: 'relative'
     },
-    buttons: {
-        display: 'flex',
-        flexDirection: 'column'
-    }
+    // buttons: {
+    //     display: 'flex',
+    //     flexDirection: 'column'
+    // }
 }
 
 export const themes = {
@@ -38,6 +38,6 @@ export const themes = {
   };
   
   export const ThemeContext = React.createContext(
-    themes.default // default value
+    themes.default
   );
   

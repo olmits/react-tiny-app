@@ -1,0 +1,12 @@
+[
+    {"title": "Lorem, ipsum dolor", "description": "Lorem ipsum dolor sit amet, con adipiscing elit, sed diam nonu.", "price": 14.99, "img_url": "./../content/covers/cov-img (1).jfif", "id": 373995, "article_color": "#5D807A"},
+    {"title": "Ullam ad suscipit", "description": "Lorem ipsum dolor sit amet, con adipiscing elit, sed diam nonu.", "price": 9.99, "img_url": "./../content/covers/cov-img (2).jfif", "id": 163399, "article_color": "#6EFFE9"},
+    {"title": "Odit at provident", "description": "Lorem ipsum dolor sit amet, con adipiscing elit, sed diam nonu.", "price": 10.99, "img_url": "./../content/covers/cov-img (3).jfif", "id": 585938, "article_color": "#BAFFF5"},
+    {"title": "Consequatur", "description": "Lorem ipsum dolor sit amet, con adipiscing elit, sed diam nonu.", "price": 13.99, "img_url": "./../content/covers/cov-img (4).jfif", "id": 318476, "article_color": "#48857C"},
+    {"title": "Vel inventore", "description": "Lorem ipsum dolor sit amet, con adipiscing elit, sed diam nonu.", "price": 14.99, "img_url": "./../content/covers/cov-img (5).jfif", "id": 208139, "article_color": "#95CCC4"},
+    {"title": "Sed, hic velit", "description": "Lorem ipsum dolor sit amet, con adipiscing elit, sed diam nonu.", "price": 12.99, "img_url": "./../content/covers/cov-img (6).jfif", "id": 365976, "article_color": "#53C7FF"},
+    {"title": "Necessitatibus", "description": "Lorem ipsum dolor sit amet, con adipiscing elit, sed diam nonu.", "price": 12.99, "img_url": "./../content/covers/cov-img (7).jfif", "id": 57616, "article_color": "#BAE8FF"},
+    {"title": "Aut ea eum optio", "description": "Lorem ipsum dolor sit amet, con adipiscing elit, sed diam nonu.", "price": 9.99, "img_url": "./../content/covers/cov-img (8).jfif", "id": 373996, "article_color": "#487085"},
+    {"title": "Recusandae expedita", "description": "Lorem ipsum dolor sit amet, con adipiscing elit, sed diam nonu.", "price": 9.99, "img_url": "./../content/covers/cov-img (9).jfif", "id": 59449, "article_color": "#95BACC"},
+    {"title": "Quae suscipit nesciunt", "description": "Lorem ipsum dolor sit amet, con adipiscing elit, sed diam nonu.", "price": 17.99, "img_url": "./../content/covers/cov-img (10).jfif", "id": 602679, "article_color": "#5D7480"}
+]
