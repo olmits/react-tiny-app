@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import withStyles from 'react-jss';
 import styles from './styles';
-import {ThemeContext, themes} from '../../containers/UserPage/style';
+import { ThemeContext } from '../../containers/AppStyle';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Body from './Body';

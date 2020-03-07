@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 
+// import Button from './../Button';
+// import Modal from './../Modal';
+// import fixtures from './../Modal/fixtures';
+// import { ThemeContext, themes } from './../../containers/AppStyle';
+
 import SectionHeader from './../SectionHeader';
 import ProductCard from './../ProductCard';
 import SampleArrow from './SampleSlickArrow';
@@ -10,30 +15,22 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 /**
- * @description: create and render a list of products as slick slider carousel of cards
- * @method handleAddToCart to add product item to a cart 
- * function, that is received from UserPage as a callback
- * @method handleAddToFavorite to add product item to a favorite
- * function, that is received from UserPage as a callback
- * @method handleRemoveFromFavorite to remove product item from a favorite
- * function, that is received from UserPage as a callback
+ * @description: create and render a list of items as slick slider carousel of cards
+ * @method mainButtonProceeding 
+ * @method secondaryButtonProceeding 
  */
 class ProductList extends Component {
-    
-    handleAddToCart(prodId){
-        const {handleAddToCart} = this.props
-        handleAddToCart(prodId)
+
+    mainButtonProceeding(productInfo){
+        const { mainButtonProceeding } = this.props
+        mainButtonProceeding(productInfo);
     }
-    handleAddToFavorite(prodId){
-        const {handleAddToFavorite} = this.props
-        handleAddToFavorite(prodId)
-    }
-    handleRemoveFromFavorite(prodId){
-        const {handleRemoveFromFavorite} = this.props
-        handleRemoveFromFavorite(prodId)
+    secondaryButtonProceeding(productInfo){
+        const {secondaryButtonProceeding} = this.props;
+        secondaryButtonProceeding(productInfo)
     }
     render(){
-        const {dataProducts} = this.props
+        const {sectionItems, sectionTitle, mainButtonText, secondaryButtonStatus} = this.props
         
         const settings = {
             dots: false,
@@ -46,17 +43,19 @@ class ProductList extends Component {
             nextArrow: <SampleArrow addStyle={{top: -40, right: 3}} addContentClass='customNextArrow'/>,
             prevArrow: <SampleArrow addStyle={{top: -40, right: 25}} addContentClass='customPrevArrow'/>
         }
+
         return(
             <div className="slider-container">
-                <SectionHeader title="LATEST ARRIVALS IN MUSICA" />
+                <SectionHeader title = {sectionTitle} />
                 <Slider {...settings}>
-                    {dataProducts.map((product) => <ProductCard 
+                    {sectionItems.map((product) => <ProductCard 
                                                         key={product.id} 
                                                         productInfo={product}
-                                                        clickOnCartBtn={this.handleAddToCart.bind(this)}
-                                                        clickOnAddFavoriteBtn={this.handleAddToFavorite.bind(this)}
-                                                        clickOnRemoveFavoriteBtn={this.handleRemoveFromFavorite.bind(this)}
-                            />)}
+                                                        mainButtonText={mainButtonText}
+                                                        clickOnMainBtn={this.mainButtonProceeding.bind(this)}
+                                                        secondaryButtonStatus={secondaryButtonStatus}
+                                                        clickOnSecondaryBtn={this.secondaryButtonProceeding.bind(this)}/>
+                                                        )}
                 </Slider>
             </div>
         )
@@ -64,10 +63,12 @@ class ProductList extends Component {
 }
 
 ProductList.propTypes = {
-    dataProducts: PropTypes.array,
-    handleAddToCart: PropTypes.func,
-    handleAddToFavorite: PropTypes.func,
-    handleRemoveFromFavorite: PropTypes.func
+    sectionTitle: PropTypes.string,
+    sectionItems: PropTypes.array,
+    mainButtonProceeding: PropTypes.func,
+    mainButtonText: PropTypes.string,
+    secondaryButtonProceeding: PropTypes.func,
+    secondaryButtonStatus: PropTypes.bool
 }
 
 export default ProductList

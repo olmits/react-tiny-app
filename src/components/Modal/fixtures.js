@@ -1,6 +1,6 @@
 export default {
     confirmModalContent: {
-        header: 'Are you sure, ',
+        header: '',
         closeButton: true,
         text: 'Once you put this product in cart, you aren\'t able to rid off it!',
         theme: 'confirm',

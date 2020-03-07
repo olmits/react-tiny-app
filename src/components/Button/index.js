@@ -8,8 +8,6 @@ class Button extends Component {
     constructor(props){
         super(props)
         this.state = {hover: false}
-        this.handleClick = this.handleClick.bind(this);
-        this.handleHover = this.handleHover.bind(this);
     }
     handleHover() {
         this.setState({hover: !this.state.hover})
@@ -39,9 +37,9 @@ class Button extends Component {
                 className={classes.btn} 
                 style={btmStyle} 
                 type="button"
-                onClick={this.handleClick} 
-                onMouseEnter={this.handleHover}
-                onMouseLeave={this.handleHover}
+                onClick={this.handleClick.bind(this)} 
+                onMouseEnter={this.handleHover.bind(this)}
+                onMouseLeave={this.handleHover.bind(this)}
                 >
                 {text}
             </button>

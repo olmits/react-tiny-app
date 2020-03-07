@@ -33,9 +33,13 @@ export default class ProductServices {
         }
     }
 
-    static getProductFromLocalStorage(key){
+    static getProductsFromLocalStorage(key){
         const localStorageContent = localStorage.getItem(key);
-        return JSON.parse(localStorageContent);
+        if (localStorageContent) {
+            return JSON.parse(localStorageContent);
+        } else {
+            return null
+        }
     }
 
     static removeProductFromLocalStorage(key, item){

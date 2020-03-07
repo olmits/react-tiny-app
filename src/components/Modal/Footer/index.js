@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import styles from "./styles";
-import {ThemeContext} from '../../../containers/UserPage/style';
+import { ThemeContext } from '../../../containers/AppStyle';
 
 class Footer extends Component {
     constructor(props){

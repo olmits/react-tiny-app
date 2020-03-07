@@ -10,7 +10,7 @@ const useStyles = createUseStyles({
         height: '20px',
         backgroundColor: '#cc3333',
         borderRadius: '.25rem',
-        transition: 'all 0.6ms easy-out',
+        transition: '0.6ms easy-out',
         '&:hover': {
             opacity: '.7'
         },

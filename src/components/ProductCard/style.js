@@ -14,7 +14,6 @@ export default {
             }
         }
     },
-    
     itemCardBody : {
         padding: {
             top: 15,
