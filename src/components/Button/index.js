@@ -1,51 +1,26 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import withStyles from 'react-jss';
 import styles from './style';
 import PropTypes from "prop-types";
 
+function Button(props){
+    const [hover, setHover] = useState(false);
+    const {text, backgroundColor, onClick, classes} = props;
 
-class Button extends Component {
-    constructor(props){
-        super(props)
-        this.state = {hover: false}
-    }
-    handleHover() {
-        this.setState({hover: !this.state.hover})
-    }
-    handleClick() {
-        const {onClick} = this.props
-        onClick()
-    }
-    render(){
-        const {text, backgroundColor, classes} = this.props;
-        let btmStyle;
-        
-        if (this.state.hover) {
-            btmStyle = { 
-                color: '#ffffff', 
-                backgroundColor: backgroundColor, 
-            }
-        } else {
-            btmStyle = { 
-                color: backgroundColor, 
-                borderColor: backgroundColor, 
-                backgroundColor: '#ffffff',
-            }
-        }
-        return (
-            <button 
-                className={classes.btn} 
-                style={btmStyle} 
-                type="button"
-                onClick={this.handleClick.bind(this)} 
-                onMouseEnter={this.handleHover.bind(this)}
-                onMouseLeave={this.handleHover.bind(this)}
-                >
-                {text}
-            </button>
-        )
-    }
+    return (
+        <button
+        className={classes.btn} 
+        style={(hover ? {color: '#ffffff', backgroundColor: backgroundColor} : { color: backgroundColor, borderColor: backgroundColor, backgroundColor: '#ffffff'})} 
+        type="button"
+        onClick={onClick} 
+        onMouseEnter={() => {setHover(!hover)}}
+        onMouseLeave={() => {setHover(!hover)}}
+        >
+            {text}
+        </button>
+    )
 }
+
 
 Button.propTypes = {
     text: PropTypes.string,

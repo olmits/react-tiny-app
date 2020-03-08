@@ -46,7 +46,7 @@ class UserCart extends Component {
                     id: 'btnActionConf',
                     comp: <Button
                             text="Yes, please"
-                            backgroundColor={this.state.theme.backgroundBtn} 
+                            backgroundColor={this.state.themeBtns.backgroundBtn} 
                             onClick = { () => {
                                 ProductServices.removeProductFromLocalStorage('cart', productInfo);
                                 this.setState({products: this.state.products.filter((product) => product.id !== productInfo.id)});
@@ -57,7 +57,7 @@ class UserCart extends Component {
                     id: 'btnActionRjct', 
                     comp: <Button 
                             text="No, wait" 
-                            backgroundColor={this.state.theme.backgroundBtn} 
+                            backgroundColor={this.state.themeBtns.backgroundBtn} 
                             onClick = { () => {
                                 this.closeModal();
                             }}/>
