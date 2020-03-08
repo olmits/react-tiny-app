@@ -9,12 +9,12 @@ function Button(props){
 
     return (
         <button
-        className={classes.btn} 
-        style={(hover ? {color: '#ffffff', backgroundColor: backgroundColor} : { color: backgroundColor, borderColor: backgroundColor, backgroundColor: '#ffffff'})} 
-        type="button"
-        onClick={onClick} 
-        onMouseEnter={() => {setHover(!hover)}}
-        onMouseLeave={() => {setHover(!hover)}}
+            className={classes.btn} 
+            style={(hover ? {color: '#ffffff', backgroundColor: backgroundColor} : { color: backgroundColor, borderColor: backgroundColor, backgroundColor: '#ffffff'})} 
+            type="button"
+            onClick={onClick} 
+            onMouseEnter={() => {setHover(!hover)}}
+            onMouseLeave={() => {setHover(!hover)}}
         >
             {text}
         </button>
