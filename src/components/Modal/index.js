@@ -1,47 +1,40 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { ThemeContext } from '../../containers/AppStyle';
+
 import withStyles from 'react-jss';
 import styles from './styles';
-import { ThemeContext } from '../../containers/AppStyle';
-import PropTypes from 'prop-types';
+
 import Header from './Header';
 import Body from './Body';
 import Footer from './Footer';
 
-class Modal extends Component {
-    constructor(props) {
-        super(props)
+function Modal(props){
+    const {header, closeButton, text, actions, closeModal, classes} = props;
 
-        this.handleClose = this.handleClose.bind(this);
-    }
-    handleClose() {
-        const {closeModal} = this.props;
-        closeModal();
-    }
-    render(){
-        
-        const {header, closeButton, text, actions, classes} = this.props;
-        let theme = this.context;
-        
-        return (
-            <div className={classes.modal} >
-                <div className={classes.modalContent}>
-                    <Header 
-                        title={header} 
-                        closeButton={closeButton} 
-                        closeCallback={this.handleClose} 
-                        styleObject={theme}/>
-                    <Body 
-                        text={text} />
-                    <Footer 
-                        actions={actions}/>
-                </div>
-                <div onClick={this.handleClose} className={classes.modalBackdrop}></div>
-            </div>
-        )
-    }
+    return (
+        <ThemeContext.Consumer>
+            { 
+                theme => (
+                    <div className={classes.modal} >
+                        <div className={classes.modalContent}>
+                            <Header 
+                                title={header} 
+                                closeButton={closeButton} 
+                                closeCallback={closeModal} 
+                                styleObject={theme}/>
+                            <Body 
+                                text={text} />
+                            <Footer 
+                                actions={actions}/>
+                        </div>
+                        <div onClick={closeModal} className={classes.modalBackdrop}></div>
+                    </div>
+                )
+            }
+        </ThemeContext.Consumer>
+    )
 }
-
-Modal.contextType = ThemeContext;
 
 Modal.protoTypes = {
     header: PropTypes.string,

@@ -1,40 +1,31 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
+import { ThemeContext } from '../../../containers/AppStyle';
+
 import withStyles from 'react-jss';
 import styles from "./styles";
-import {ThemeContext} from '../../../containers/AppStyle';
 
-class Header extends Component {
-    constructor(props){
-        super(props)
+function Header(props){
+    const {title, closeButton, closeCallback, classes} = props;
 
-        this.handleClose = this.handleClose.bind(this);
-    }
-    handleClose() {
-        const {closeCallback} = this.props;
-        closeCallback();
-    }
-    render() {
-        const {title, closeButton, classes} = this.props;
-
-        return (
-            <ThemeContext.Consumer>
-                {theme => (
-                    <div className={classes.modalHeader} style={{backgroundColor: theme.backgroundModalHeader}}>
-                        {title}
-                        { 
-                            closeButton && 
-                            <button 
-                                className={classes.closeModalBtn}
-                                onClick={this.handleClose}
-                                >&times;</button>
-                        }
-                    </div>
-                )}
-            </ThemeContext.Consumer>
-        )
-    }
+    return (
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className={classes.modalHeader} style={{backgroundColor: theme.backgroundModalHeader}}>
+                    {title}
+                    { 
+                        closeButton && 
+                        <button 
+                            className={classes.closeModalBtn}
+                            onClick={closeCallback}
+                            >&times;</button>
+                    }
+                </div>
+            )}
+        </ThemeContext.Consumer>
+    )
 }
+
 
 Header.propTypes = {
     title: PropTypes.string,
