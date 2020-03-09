@@ -21,11 +21,12 @@ class UserFavorites extends Component {
         ProductServices.setProductToLocalStorage('cart', productInfo);
     }
     toggleFavorite(productInfo) {
+        
         const product = this.state.products.find((item) => item.id === productInfo.id);
-        if (product.fav) {
-          product.fav = false;
-          ProductServices.removeProductFromLocalStorage('favorite', product)
-          this.setState({products: this.state.products.filter((product) => product.id !== productInfo)})
+        if (productInfo.fav) {
+            product.fav = false;
+            ProductServices.removeProductFromLocalStorage('favorite', product)
+            this.setState({products: this.state.products.filter((product) => product.id !== productInfo.id)})
         }
       }
     render(){

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+
 import './../../../../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import {createUseStyles} from 'react-jss';
 
