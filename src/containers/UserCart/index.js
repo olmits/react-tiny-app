@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import ProductServices from './../../services/productServices';
 import ProductList from './../../components/ProductList';
@@ -8,94 +8,86 @@ import Modal from './../../components/Modal';
 import fixtures from './../../components/Modal/fixtures';
 import { ThemeContext, themes } from './../AppStyle';
 
-class UserCart extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            modal: false, 
-            modalContent: {},
-            theme: themes.alert,
-            themeBtns: themes.alert.btns,
-            products: []
-        }
-    }
-    componentDidMount(){
+function UserCart(){
+    const [modal, setModal] = useState(false);
+    const [modalContent, setModalContent] = useState({});
+    const [products, setProducts] = useState([]);
+    const [theme, setTheme] = useState(themes.default);
+
+    const themeBtns = themes.alert.btns
+
+    useEffect(() => {
         const cartProducts = ProductServices.getProductsFromLocalStorage('cart');
-        this.setState({products: cartProducts});
-    }
-    openModal(obj) {
-        if (!this.state.modal) {
-                this.setState({
-                    modal: true,
-                    modalContent: obj,
-                })
-            }
-        }
-    closeModal() {
-        if (this.state.modal) {
-                this.setState({
-                    modal: false,
-                    modalContent: {},
-                })
-            }
-        }
-    handleRemoveFromCart(productInfo) {
+        setProducts(cartProducts);
+    }, []);
+
+    function handleRemoveFromCart(productInfo) {
         const removeFromCartModal = fixtures.confirmModalContent;
         removeFromCartModal.actions = [
                 {
                     id: 'btnActionConf',
                     comp: <Button
                             text="Yes, please"
-                            backgroundColor={this.state.themeBtns.backgroundBtn} 
+                            backgroundColor={themeBtns.backgroundBtn} 
                             onClick = { () => {
                                 ProductServices.removeProductFromLocalStorage('cart', productInfo);
-                                this.setState({products: this.state.products.filter((product) => product.id !== productInfo.id)});
-                                this.closeModal();
+                                setProducts(products.filter((product) => product.id !== productInfo.id))
+                                setModal(false)
+                                setTheme(themes.default)
+                                setModalContent({})
                             }}/>
                 },
                 {
                     id: 'btnActionRjct', 
                     comp: <Button 
                             text="No, wait" 
-                            backgroundColor={this.state.themeBtns.backgroundBtn} 
+                            backgroundColor={themeBtns.backgroundBtn} 
                             onClick = { () => {
-                                this.closeModal();
+                                setModal(false)
+                                setTheme(themes.default)
+                                setModalContent({})
                             }}/>
                 }
             ]
         removeFromCartModal.header = `Are you sure, you want to remove "${ productInfo.title }" from Cart?`;
-        this.openModal(removeFromCartModal)
+
+        setModalContent(removeFromCartModal)
+        setTheme(themes.alert)
+        setModal(true)
     }
-    render(){
-        return(
-            <div className='container cart-container'>
-                {
-                    this.state.products &&
-                    <ThemeContext.Provider value={this.state.themeBtns}>
-                        <ProductList 
-                            sectionTitle = 'USER CART'
-                            sectionItems={this.state.products}
-                            mainButtonProceeding={this.handleRemoveFromCart.bind(this)}
-                            mainButtonText = 'remove'
-                            secondaryButtonProceeding={() => {}}
-                            secondaryButtonStatus = {false}
+
+    return(
+        <div className='container cart-container'>
+            {
+                products &&
+                <ThemeContext.Provider value={themeBtns}>
+                    <ProductList 
+                        sectionTitle = 'USER CART'
+                        sectionItems={products}
+                        mainButtonProceeding={handleRemoveFromCart}
+                        mainButtonText = 'remove'
+                        secondaryButtonProceeding={() => {}}
+                        secondaryButtonStatus = {false}
+                    />
+                </ThemeContext.Provider>
+            }
+            { modal && 
+                <ThemeContext.Provider value={theme.modals}>
+                    <Modal 
+                        header={modalContent.header} 
+                        closeButton={modalContent.closeButton}
+                        closeModal={() => {
+                            setModal(false)
+                            setTheme(themes.default)
+                            setModalContent({})
+                        }}
+                        text={modalContent.text}
+                        actions={modalContent.actions}
                         />
-                    </ThemeContext.Provider>
-                }
-                { this.state.modal && 
-                    <ThemeContext.Provider value={this.state.theme.modals}>
-                        <Modal 
-                            header={this.state.modalContent.header} 
-                            closeButton={this.state.modalContent.closeButton}
-                            closeModal={this.closeModal.bind(this)} 
-                            text={this.state.modalContent.text}
-                            actions={this.state.modalContent.actions}
-                            />
-                    </ThemeContext.Provider>
-                }
-            </div>
-        )
-    }
+                </ThemeContext.Provider>
+            }
+        </div>
+    )
 }
 
 export default UserCart
