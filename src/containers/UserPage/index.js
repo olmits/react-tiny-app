@@ -12,6 +12,7 @@ function UserPage() {
   const [modalContent, setModalContent] = useState({});
   const [products, setProducts] = useState([]);
   const [theme, setTheme] = useState(themes.default);
+  
   const themeBtns = themes.default.btns
   
   useEffect(() => {
