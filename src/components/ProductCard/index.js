@@ -14,14 +14,14 @@ import withStyles from 'react-jss';
 
 /**
  * @description ProductCard function create and render a card of product information
- * @param {Object} props contains productInfo, clickOnMainBtn, mainButtonText, clickOnSecondaryBtn, secondaryButtonStatus
+ * @param {Object} props contains itemInfo, clickOnMainBtn, mainButtonText, clickOnSecondaryBtn, secondaryButtonStatus
  * 
  */
 function ProductCard(props){
     const [favorite, setFavorite] = useState(false);
     
     const {
-        productInfo, 
+        itemInfo, 
         clickOnMainBtn, 
         mainButtonText, 
         clickOnSecondaryBtn, 
@@ -29,7 +29,7 @@ function ProductCard(props){
         classes} = props
 
     useEffect(() => {
-        if(productInfo.fav) setFavorite(true)
+        if(itemInfo.fav) setFavorite(true)
     })
 
     return(
@@ -42,14 +42,14 @@ function ProductCard(props){
                                 addStyle={(favorite ? {color: 'yellow',opacity: '1'} : {})}
                                 onClick={() => {
                                     setFavorite(!favorite)
-                                    clickOnSecondaryBtn(productInfo)
+                                    clickOnSecondaryBtn(itemInfo)
                                 }}/>
                         }
-                        <Card.Img className={classes.itemCardImg} variant="top" src={productInfo.img_url} />
+                        <Card.Img className={classes.itemCardImg} variant="top" src={itemInfo.img_url} />
                         <Card.Body className={classes.itemCardBody}>
                             <Card.Subtitle className={classes.itemCardSubtitle}>
                                 <div className={classes.itemCardSubtitleName}>
-                                    {productInfo.title}
+                                    {itemInfo.title}
                                 </div> 
                                 <div className={classes.itemCardSubtitleFilter}>by Artist</div>
                             </Card.Subtitle>
@@ -63,14 +63,14 @@ function ProductCard(props){
                                 starSpacing='2px'
                                 name='rating'
                             />
-                            <Card.Text className={classes.itemCardText}>{productInfo.description}</Card.Text>
+                            <Card.Text className={classes.itemCardText}>{itemInfo.description}</Card.Text>
                             <div className={classes.itemCardFooter}>
-                                <div className={classes.itemCardFooterPrice}>${productInfo.price}</div>
+                                <div className={classes.itemCardFooterPrice}>${itemInfo.price}</div>
                                 <Button 
                                     text={mainButtonText} 
                                     backgroundColor={themeBtns.backgroundBtn} 
                                     onClick={() => {
-                                        clickOnMainBtn(productInfo)
+                                        clickOnMainBtn(itemInfo)
                                     }} />
                             </div>
                         </Card.Body>
@@ -82,7 +82,7 @@ function ProductCard(props){
 }
 
 ProductCard.propTypes = {
-    productInfo: PropTypes.object,
+    itemInfo: PropTypes.object,
     mainButtonText: PropTypes.string,
     clickOnMainBtn: PropTypes.func,
     secondaryButtonStatus: PropTypes.bool,

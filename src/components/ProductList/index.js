@@ -14,52 +14,47 @@ import SampleArrow from './SampleSlickArrow';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+
 /**
- * @description: create and render a list of items as slick slider carousel of cards
- * @method mainButtonProceeding 
- * @method secondaryButtonProceeding 
+ * @description ProductList function create and render a list of items as slick slider carousel of cards
+ * @param {Object} props contains sectionItems, sectionTitle, mainButtonText, mainButtonProceeding, secondaryButtonStatus, secondaryButtonProceeding
  */
-class ProductList extends Component {
+function ProductList(props){
+    const {
+        sectionItems, 
+        sectionTitle, 
+        mainButtonText, 
+        mainButtonProceeding, 
+        secondaryButtonStatus, 
+        secondaryButtonProceeding} = props
 
-    mainButtonProceeding(productInfo){
-        const { mainButtonProceeding } = this.props
-        mainButtonProceeding(productInfo);
+    const settings = {
+        dots: false,
+        infinite: false,
+        speed: 200,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        swipeToSlide: true,
+        arrows: true,
+        nextArrow: <SampleArrow addStyle={{top: -40, right: 3}} addContentClass='customNextArrow'/>,
+        prevArrow: <SampleArrow addStyle={{top: -40, right: 25}} addContentClass='customPrevArrow'/>
     }
-    secondaryButtonProceeding(productInfo){
-        const {secondaryButtonProceeding} = this.props;
-        secondaryButtonProceeding(productInfo)
-    }
-    render(){
-        const {sectionItems, sectionTitle, mainButtonText, secondaryButtonStatus} = this.props
-        
-        const settings = {
-            dots: false,
-            infinite: false,
-            speed: 200,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            swipeToSlide: true,
-            arrows: true,
-            nextArrow: <SampleArrow addStyle={{top: -40, right: 3}} addContentClass='customNextArrow'/>,
-            prevArrow: <SampleArrow addStyle={{top: -40, right: 25}} addContentClass='customPrevArrow'/>
-        }
 
-        return(
-            <div className="slider-container">
-                <SectionHeader title = {sectionTitle} />
-                <Slider {...settings}>
-                    {sectionItems.map((product) => <ProductCard 
-                                                        key={product.id} 
-                                                        productInfo={product}
-                                                        mainButtonText={mainButtonText}
-                                                        clickOnMainBtn={this.mainButtonProceeding.bind(this)}
-                                                        secondaryButtonStatus={secondaryButtonStatus}
-                                                        clickOnSecondaryBtn={this.secondaryButtonProceeding.bind(this)}/>
-                                                        )}
-                </Slider>
-            </div>
-        )
-    }
+    return(
+        <div className="slider-container">
+            <SectionHeader title = {sectionTitle} />
+            <Slider {...settings}>
+                {sectionItems.map((item) => <ProductCard 
+                                                    key={item.id} 
+                                                    itemInfo={item}
+                                                    mainButtonText={mainButtonText}
+                                                    clickOnMainBtn={mainButtonProceeding}
+                                                    secondaryButtonStatus={secondaryButtonStatus}
+                                                    clickOnSecondaryBtn={secondaryButtonProceeding}/>
+                                                    )}
+            </Slider>
+        </div>
+    )
 }
 
 ProductList.propTypes = {
