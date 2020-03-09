@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-
 import ProductServices from './../../services/productServices';
+import { ThemeContext, themes } from './../AppStyle';
+
 import ProductList from './../../components/ProductList';
 
-import { ThemeContext, themes } from './../AppStyle';
 
 class UserFavorites extends Component {
     constructor(props){

@@ -1,11 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
-
-// import Button from './../Button';
-// import Modal from './../Modal';
-// import fixtures from './../Modal/fixtures';
-// import { ThemeContext, themes } from './../../containers/AppStyle';
 
 import SectionHeader from './../SectionHeader';
 import ProductCard from './../ProductCard';
