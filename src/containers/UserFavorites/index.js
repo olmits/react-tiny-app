@@ -20,7 +20,7 @@ function UserFavorites(){
 
     function toggleFavorite(productInfo) {
         
-        const product = this.state.products.find((item) => item.id === productInfo.id);
+        const product = products.find((item) => item.id === productInfo.id);
         if (productInfo.fav) {
             product.fav = false;
             ProductServices.removeProductFromLocalStorage('favorite', product)

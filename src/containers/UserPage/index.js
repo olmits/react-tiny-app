@@ -3,9 +3,10 @@ import ProductServices from './../../services/productServices';
 import { ThemeContext, themes } from './../AppStyle';
 
 import ProductList from './../../components/ProductList';
-import Button from './../../components/Button';
+import Button from '../../components/lib/Layout/Button';
 import Modal from './../../components/Modal';
 import fixtures from './../../components/Modal/fixtures';
+import AppContent from './../../components/lib/Layout/AppContent';
 
 function UserPage() {
   const [modal, setModal] = useState(false);
@@ -14,7 +15,7 @@ function UserPage() {
   const [theme, setTheme] = useState(themes.default);
   
   const themeBtns = themes.default.btns
-  
+
   useEffect(() => {
     (async  () => {
       const products = await ProductServices.getProducts('data/products.json');
@@ -76,7 +77,8 @@ function UserPage() {
   }
 
   return (
-    <div className = 'container'>
+    <>
+      <div className = 'container'>
         <ThemeContext.Provider value={themeBtns}>
           <ProductList 
             sectionTitle = 'LATEST ARRIVALS IN MUSICA'
@@ -102,7 +104,8 @@ function UserPage() {
                     />
             </ThemeContext.Provider>
         }
-    </div>
+      </div>
+    </>
   )
 } 
 

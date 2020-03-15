@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 
-import SectionHeader from './../SectionHeader';
+import SectionHeader from '../lib/Layout/SectionHeader';
 import ProductCard from './../ProductCard';
 import SampleArrow from './SampleSlickArrow';
 

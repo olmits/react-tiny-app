@@ -1,16 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { ThemeContext } from './../../containers/AppStyle';
+import { ThemeContext } from './../../../../containers/AppStyle';
 
 import withStyles from 'react-jss';
-
 import Navbar from 'react-bootstrap/Navbar';
 import style from './style';
 
+export default withStyles(style)(withRouter(AppHeader))
 
-function HeaderNavBar(props){
+function AppHeader(props){
     const { brand, links, classes } = props;
 
     return(
@@ -34,9 +34,7 @@ function HeaderNavBar(props){
     )
 }
 
-HeaderNavBar.propTypes = {
+AppHeader.propTypes = {
     brand: PropTypes.object,
     links: PropTypes.array
 }
-
-export default withStyles(style)(HeaderNavBar)

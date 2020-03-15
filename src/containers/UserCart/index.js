@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ProductServices from './../../services/productServices';
 import ProductList from './../../components/ProductList';
 
-import Button from './../../components/Button';
+import Button from '../../components/lib/Layout/Button';
 import Modal from './../../components/Modal';
 import fixtures from './../../components/Modal/fixtures';
 import { ThemeContext, themes } from './../AppStyle';

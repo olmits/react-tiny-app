@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import Button from './../Button';
+import Button from '../lib/Layout/Button';
 
 import Card from 'react-bootstrap/Card';
 import StarRatings from 'react-star-ratings';
