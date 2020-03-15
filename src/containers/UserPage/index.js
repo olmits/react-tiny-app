@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ProductServices from './../../services/productServices';
 import { ThemeContext, themes } from './../AppStyle';
-
 import ProductList from './../../components/ProductList';
 import Button from '../../components/lib/Layout/Button';
-import Modal from './../../components/Modal';
-import fixtures from './../../components/Modal/fixtures';
-import AppContent from './../../components/lib/Layout/AppContent';
+import Modal from '../../components/lib/Layout/Modal';
+import fixtures from '../../components/lib/Layout/Modal/fixtures';
 
 function UserPage() {
   const [modal, setModal] = useState(false);

@@ -1,7 +1,6 @@
 import React from "react";
+import { ThemeContext } from '../../../../../containers/AppStyle';
 import PropTypes from 'prop-types';
-import { ThemeContext } from '../../../containers/AppStyle';
-
 import withStyles from 'react-jss';
 import styles from "./styles";
 

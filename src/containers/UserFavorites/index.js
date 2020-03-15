@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductServices from './../../services/productServices';
 import { ThemeContext, themes } from './../AppStyle';
-
 import ProductList from './../../components/ProductList';
 
 function UserFavorites(){
